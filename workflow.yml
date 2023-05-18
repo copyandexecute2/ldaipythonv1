@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Ersetze '3.x' durch die gewünschte Python-Version
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # Wenn du eine requirements.txt-Datei hast
+
+    - name: Run tests
+      run: pytest  # Oder ersetze 'pytest' durch den Befehl, um deine Tests auszuführen
+
+    - name: Build package
+      run: python setup.py sdist bdist_wheel
+
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
