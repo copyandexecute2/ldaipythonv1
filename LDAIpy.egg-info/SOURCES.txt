@@ -1,0 +1,8 @@
+setup.py
+LDAIpy.egg-info/PKG-INFO
+LDAIpy.egg-info/SOURCES.txt
+LDAIpy.egg-info/dependency_links.txt
+LDAIpy.egg-info/requires.txt
+LDAIpy.egg-info/top_level.txt
+ldai/__init__.py
+ldai/__main__.py
